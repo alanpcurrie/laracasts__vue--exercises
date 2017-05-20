@@ -11,17 +11,19 @@
 <body>
 
 	<div id="root">
+		<!-- v-model directive for binding to form inputa -->
 		<input type="text" id="input" v-model="message">
 		<p>the value of the input is: {{message}}</p>
 	</div>
 
-<script src="vue.js"></script>
+	<script src="vue.js"></script>
 
 	<script>
+	//create a vue instance
 		new Vue({
-			el: '#root',
+			el: '#root', //bind to an element
 			data: {
-				message: 'Hello World'
+				message: 'Hello World' //spcify data -  model for the view
 			}
 		})
 	</script>

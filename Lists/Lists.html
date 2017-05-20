@@ -1,0 +1,49 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>VUE.JS | Lists</title>
+
+</head>
+
+<body>
+
+	<div id="root">
+
+		<ul>
+			<!-- v for == directive -->
+			<!-- <li v-for = "name in names">{{ name }}</li> -->
+			<!-- v-text will automatically set content in the list items -->
+			<li v-for="name in names" v-text="name"></li>
+			<input type="text" name="" id="input"><button id="button">add name</button>
+		</ul>
+
+
+	</div>
+
+	<script src="vue.js"></script>
+
+	<script>
+		//create a vue instance
+		var app = new Vue({
+			el: '#root', //bind to an element
+			data: {
+				names: ['joe', 'mary', 'jane', 'jack']
+			}
+		});
+		// old school way
+		document.querySelector('#button').addEventListener('click', () => {
+			let name = document.querySelector('#input');
+			app.names.push(name.value);
+			//make name value in form field an empty string
+			name.value = '';
+		});
+	</script>
+
+
+</body>
+
+
+</html>
