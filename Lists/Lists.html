@@ -31,14 +31,16 @@
 			el: '#root', //bind to an element
 			data: {
 				names: ['joe', 'mary', 'jane', 'jack']
+			},
+			mounted() {
+				// old school way
+				document.querySelector('#button').addEventListener('click', () => {
+					let name = document.querySelector('#input');
+					app.names.push(name.value);
+					//make name value in form field an empty string
+					name.value = '';
+				});
 			}
-		});
-		// old school way
-		document.querySelector('#button').addEventListener('click', () => {
-			let name = document.querySelector('#input');
-			app.names.push(name.value);
-			//make name value in form field an empty string
-			name.value = '';
 		});
 	</script>
 
