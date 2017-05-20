@@ -1,0 +1,57 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>VUE.JS | Attribute and class binding</title>
+
+<style>
+	.color-red {
+		color: red;
+	}
+	.is-loading {
+		background-color: pink;
+	}
+</style>
+
+</head>
+
+<body>
+
+	<div id="root">
+		<h1 v-bind:class="className">Hello world</h1>
+		<!-- or shorthand -->
+		<h2 :class="className">Hello again world</h2>
+		<!-- binds title to button -->
+
+		<button v-bind:title="title">Hover over me</button>
+		<!-- or shorthand -->
+		<button :title="title">Hover over me</button>
+<!-- binding isLoading to data property (set to false) - onclick to toggle class -->
+		<button :class = "{'is-loading': isLoading }" @click="toggleClass">Toggle Me</button>
+	</div>
+
+
+	<script src="vue.js"></script>
+
+	<script>
+		//create a vue instance
+		var app = new Vue({
+			el: '#root',
+			data: {
+				title: 'Now the title is being set through JS',
+				className: 'color-red',
+				isLoading: false
+			},
+			methods:{
+				toggleClass() {
+					this.isLoading = true;
+				}
+			}
+		});
+	</script>
+</body>
+
+
+</html>
