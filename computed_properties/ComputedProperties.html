@@ -1,0 +1,89 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>VUE.JS | Computed Properties</title>
+
+</head>
+
+<body>
+
+	<div id="root">
+		<!-- print current date -->
+		<h1 v-text="new Date()"></h1>
+		<!-- print message data property -->
+		<h2>{{ message }}</h2>
+		<!-- split into an array, reverse, then join -->
+		<h2>{{ message.split('').reverse().join('') }}</h2>
+		<!-- the same but with computed property -->
+		<h2>{{ reversedMessage }}</h2>
+
+
+		<h2>all tasks</h2>
+		<ul>
+			<li v-for="task in tasks" v-text="task.description + ' ' + task.completed"></li>
+		</ul>
+
+		<h2>complete tasks</h2>
+		<li v-for="task in tasks" v-if="task.completed === true" v-text="task.description + ' ' + task.completed"></li>
+
+		<!-- the same if but with computed property -->
+		<h2>incomplete tasks</h2>
+		<li v-for="task in incompleteTasks" v-text="task.description + ' ' + task.completed"></li>
+		</ul>
+	</div>
+
+	<script src="vue.js"></script>
+
+	<script>
+		//create a vue instance
+		var app = new Vue({
+			el: '#root', //bind to an element
+
+			data: {
+				message: 'hello world',
+
+				tasks: [{
+						description: 'click',
+						completed: true
+					},
+					{
+						description: 'run',
+						completed: false
+					},
+					{
+						description: 'take credits',
+						completed: false
+					},
+					{
+						description: 'score agenda',
+						completed: false
+					},
+					{
+						description: 'rez ice',
+						completed: false
+					},
+					{
+						description: 'take a tag',
+						completed: true
+					}
+				]
+			},
+			computed: {
+				reversedMessage() {
+					return this.message.split('').reverse().join('');
+				},
+				incompleteTasks() {
+					return this.tasks.filter(task => !task.completed);
+				},
+				completeTasks() {
+					return this.tasks.filter(task => task.completed);
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
